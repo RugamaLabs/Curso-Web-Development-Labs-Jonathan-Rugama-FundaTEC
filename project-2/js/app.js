@@ -40,28 +40,42 @@ function main() {
     let button = createTurnOnOffButton();
     let contador = 0;
     button.addEventListener("click", () => {
+        let seconds = 0;
+        let i = 0;
         if (button.textContent === "Turn on") {
             button.textContent = "Turn off";
-            function cuentaRegresiva(segundos) {
+            function startCycle(seconds) {
                 // 1. Caso Base (Condición de salida)
                 // Si no detenemos la recursividad aquí, se ejecutaría infinitamente.
-                if (segundos < 0) {
-                    console.log("¡Tiempo terminado!");
-                    return;
+
+                for (i = 0; i < 10; i++) {
+
+                    console.log(seconds, i);
+                    if (seconds > 0) {
+                        lights[i].classList.remove(patterns[seconds - 1][i]);
+                    }
+                    lights[i].classList.add(patterns[seconds][i]);
+                }
+
+                if (seconds > 4) {
+                    seconds = 0;
                 }
 
                 // 2. Acción actual
-                console.log(segundos);
+
 
                 // 3. Llamada Recursiva con Retraso
+
                 // Llamamos a la misma función, pero con (n - 1) y esperamos 1000ms (1s).
                 setTimeout(function () {
-                    cuentaRegresiva(segundos - 1);
-                }, 1000);
+                    startCycle(seconds + 1);
+                }, 1500);
             }
-            cuentaRegresiva(10);
+            startCycle(seconds);
         } else {
+
             button.textContent = "Turn on";
+
         }
     })
 }
