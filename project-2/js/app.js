@@ -38,7 +38,6 @@ function main() {
     }
     let lights = document.querySelectorAll(".light");
     let button = createTurnOnOffButton();
-    let contador = 0;
     button.addEventListener("click", () => {
         let seconds = 0;
         let i = 0;
@@ -54,21 +53,20 @@ function main() {
                     if (seconds > 0) {
                         lights[i].classList.remove(patterns[seconds - 1][i]);
                     }
+                    if (seconds === 0) {
+                        lights[i].classList.remove(patterns[4][i]);
+                    }
                     lights[i].classList.add(patterns[seconds][i]);
                 }
 
                 if (seconds === 4) {
                     seconds = 0;
+                } else {
+                    seconds++;
                 }
 
-                // 2. Acción actual
-
-
-                // 3. Llamada Recursiva con Retraso
-
-                // Llamamos a la misma función, pero con (n - 1) y esperamos 1000ms (1s).
                 setTimeout(function () {
-                    startCycle(seconds + 1);
+                    startCycle(seconds);
                 }, 1500);
             }
             startCycle(seconds);
