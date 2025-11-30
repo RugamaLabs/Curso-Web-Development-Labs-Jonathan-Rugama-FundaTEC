@@ -57,7 +57,7 @@ function main() {
                     lights[i].classList.add(patterns[seconds][i]);
                 }
 
-                if (seconds > 4) {
+                if (seconds === 4) {
                     seconds = 0;
                 }
 
