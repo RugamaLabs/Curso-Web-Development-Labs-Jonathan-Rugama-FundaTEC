@@ -37,16 +37,24 @@ body {
 
 .red {
     background-color: #FF0000;
+    transition: ease-in-out 0.2s;
+    box-shadow: 0 0 10px #FF0000;
 }
 
 .green {
     background-color: #60ef00;
+    transition: ease-in-out 0.2s;
+    box-shadow: 0 0 10px #60ef00;
 }
 
 .blue {
     background-color: #00d7ef;
+    transition: ease-in-out 0.2s;
+    box-shadow: 0 0 10px #00d7ef;
 }
 
 .yellow {
     background-color: #ffed00;
+    transition: ease-in-out 0.2s;
+    box-shadow: 0 0 10px #ffed00;
 }

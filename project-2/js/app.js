@@ -38,14 +38,13 @@ function main() {
     }
     let lights = document.querySelectorAll(".light");
     let button = createTurnOnOffButton();
+    let timerId = null;
     button.addEventListener("click", () => {
         let seconds = 0;
         let i = 0;
         if (button.textContent === "Turn on") {
             button.textContent = "Turn off";
             function startCycle(seconds) {
-                // 1. Caso Base (Condición de salida)
-                // Si no detenemos la recursividad aquí, se ejecutaría infinitamente.
 
                 for (i = 0; i < 10; i++) {
 
@@ -65,13 +64,14 @@ function main() {
                     seconds++;
                 }
 
-                setTimeout(function () {
+                timerId = setTimeout(function () {
                     startCycle(seconds);
                 }, 1500);
             }
             startCycle(seconds);
         } else {
-
+            clearTimeout(timerId);
+            timerId = null;
             button.textContent = "Turn on";
 
         }
