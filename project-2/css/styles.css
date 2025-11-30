@@ -1,13 +1,24 @@
 body {
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     background-color: #0A192F;
+    justify-content: center;
+    height: 100vh;
+
 }
 
 .light-container {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    flex-wrap: wrap;
+    height: 30%;
+    width: 100%;
     gap: 10px;
+    justify-self: center;
 }
 
 .light {
@@ -17,26 +28,25 @@ body {
     background-color: #fff;
 }
 
-.light:nth-child(2n) {
-    background-color: #adff2f;
+.button {
+    width: 100px;
+    height: 50px;
+    border-radius: 5px;
+    background-color: #fff;
 }
 
-.light:nth-child(2n+1) {
+.red {
     background-color: #FF0000;
 }
 
-.light-1:nth-child(2n) {
+.green {
+    background-color: #60ef00;
+}
+
+.lightblue {
     background-color: #00d7ef;
 }
 
-.light-1:nth-child(2n+1) {
-    background-color: yellow;
-}
-
-.light-2:nth-child(-n+2) {
-    background-color: pink;
-}
-
-.light-2:nth-child(-n+4) {
-    background-color: orange;
+.yellow {
+    background-color: #ffed00;
 }
