@@ -1,0 +1,43 @@
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestor de Tareas</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div class="app-container">
+        <header>
+            <h1>Mis Tareas</h1>
+            <button id="theme-toggle" class="btn-theme">🌙 Tema</button>
+        </header>
+
+        <section class="task-form-section">
+            <form id="task-form">
+                <div class="input-group">
+                    <label for="task-title" class="sr-only">Título de la tarea</label>
+                    <input type="text" id="task-title" placeholder="¿Qué necesitas hacer?" required minlength="3">
+                </div>
+                <div class="checkbox-group">
+                    <input type="checkbox" id="task-completed">
+                    <label for="task-completed">Completada</label>
+                </div>
+                <button type="submit" class="btn-primary">Agregar Tarea</button>
+            </form>
+            <div id="feedback-msg" class="feedback hidden"></div>
+        </section>
+
+        <section class="task-list-section">
+            <h2>Lista de Tareas</h2>
+            <div id="loading" class="loading hidden">Cargando tareas...</div>
+            <ul id="task-list" class="task-list">
+
+            </ul>
+        </section>
+    </div>
+
+</body>
+
+</html>
