@@ -47,7 +47,66 @@ function renderTask(task) {
 // Evento inicial
 document.addEventListener('DOMContentLoaded', loadTasks);
 
-// START DARK MODE SECTION
+//START POST SECTION
+const taskForm = document.getElementById('task-form');
+const titleInput = document.getElementById('task-title');
+const completedInput = document.getElementById('task-completed');
+
+taskForm.addEventListener('submit', async (e) => {
+    e.preventDefault(); // Evitar recarga
+
+    const title = titleInput.value.trim();
+    const isCompleted = completedInput.checked;
+
+    // Validación local
+    if (title.length < 3) {
+        alert('El título debe tener al menos 3 caracteres.');
+        return;
+    }
+
+    // Preparar datos
+    const newTask = {
+        title: title,
+        completed: isCompleted,
+        userId: 1 // Requerido por la API
+    };
+
+    try {
+        // POST request
+        const response = await fetch(API_URL, {
+            method: 'POST',
+            body: JSON.stringify(newTask),
+            headers: {
+                'Content-type': 'application/json; charset=UTF-8',
+            },
+        });
+
+        if (!response.ok) throw new Error('Error al crear tarea');
+
+        const data = await response.json();
+
+        // Como la API es fake, usamos los datos devueltos para renderizar
+        renderTask(data);
+
+        // Mover el nuevo elemento al principio de la lista visualmente
+        const newElement = taskList.lastElementChild;
+        taskList.prepend(newElement);
+
+        // Reset form
+        taskForm.reset();
+        alert('Tarea agregada exitosamente (simulado)');
+
+    } catch (error) {
+        console.error('Error:', error);
+        alert('No se pudo crear la tarea.');
+    }
+});
+
+/* END POST SECTION 
+
+--------------------------------------
+
+START DARK MODE SECTION */
 
 const themeToggleBtn = document.getElementById('theme-toggle');
 const body = document.body;
